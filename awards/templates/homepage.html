@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+
+<div class="container">
+
+  <!-- Looping through model   -->
+    <div class="row">
+    {% for images_item in images %}
+      <!-- displaying title -->
+      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 10px; margin: 30px; border-bottom-style: double; height: 500px; ">
+        <h2 class="text-center"> {{ images_item.title }}</h2>
+        <hr>
+      <!--Display  images  -->
+      <div style="display: block; margin-left: auto; margin-right: auto; width: 100%; height: 50%;">
+        <img src="{{images_item.i_images.url}}" class="img-responsive" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" alt="Image">
+      </div>
+        <p> <a href="singleimage/{{images_item.id}}">View details about this image</a>  </p>
+
+        <div class = "row">
+          <div class = "col-md-6">
+              <p> <span style="font-weight: bold;"> Location </span>-<a href="singlelocation/{{images_item.locations.id}}">{{ images_item.locations }}</a></p>
+              <p> <span style="font-weight: bold;"> Categories </span>-{% for c in images_item.category.all%} {{c.category_name}} | {% endfor %} </p>
+          </div>
+            <hr><hr>
+        </div>
+      </div>
+
+              {% empty %}
+              <div class="row">
+                <div class="col-md-6">
+                <h2 class="text-center">There are no images to view currently</h2>
+                </div>
+                <hr>
+              </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

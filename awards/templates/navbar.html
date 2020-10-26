@@ -11,7 +11,8 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Home | View all images</a>
     </div>
-    <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+        <div class="col-sm-4 col-md-4 navbar-right">
+    <form class="navbar-form" role="search" action="#">
 
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search Images by keywords" name="images">
@@ -20,11 +21,12 @@
         </div>
       </div>
     </form>
+        </div>
     <div class="navbar-header">
       <a class="navbar-brand" href="/admin">Admin</a>
     </div>
-    <div class="col-sm-6 col-md-6">
-            {% if user.is_authenticated %}
+    <div class="navbar-header">
+            {% if images == x %}
                     <a class='btn btn-default' href="/accounts/profile">My profile</a>
                     <a class='btn btn-default' href="accounts/logout">Logout</a>
                     <a class='btn btn-default' href="{%url 'new_post'%}">Add a new post</a>

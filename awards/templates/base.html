@@ -8,7 +8,7 @@
   {% if title %}
   <title> {{title}}</title>
   {% else %}
-    <title>The FriendBook </title>
+    <title>The IP Awards </title>
   {% endif %}
 
   {% block styles %}
@@ -20,8 +20,12 @@
     <div class="container">
       {% include "navbar.html" %}
 
-      {% block content %} <h1 class='text-center'>FriendBook</h1> {%endblock%}
+      {% block content %} <h1 class='text-center'>IP Awards</h1> {%endblock%}
 
+      {% block scripts %}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       {% bootstrap_javascript %}
+      {% endblock %}
     </div>
 </body>
 </html>
