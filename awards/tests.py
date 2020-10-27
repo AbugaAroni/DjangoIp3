@@ -80,9 +80,9 @@ class RatingTestClass(TestCase):
     # Testing Delete Method
     def test_delete_method(self):
         self.abugarating.save_rating()
-        testsaved = Project.objects.all()
+        testsaved = Rating.objects.all()
         self.assertTrue(len(testsaved) > 0)
 
-        self.abugarating.delete_project()
-        testdelete = Project.objects.filter(projectid=self.abugaproject)
+        self.abugarating.delete_rating()
+        testdelete = Rating.objects.filter(projectid=self.abugaproject)
         self.assertEqual(len(testdelete), 0)
