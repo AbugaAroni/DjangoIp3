@@ -38,4 +38,4 @@ You will need a text editor to edit and view the code.
 
 ### Link to the published site: [Images application by Abuga] (https://abugaip2.herokuapp.com/)
 
-### License: [MIT] (https://github.com/AbugaAroni/Python-Djangoweek2ip/blob/main/LICENSE)
+### License: [MIT] (https://github.com/AbugaAroni/DjangoIp3/blob/main/LICENSE)
