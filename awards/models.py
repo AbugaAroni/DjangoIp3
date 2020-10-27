@@ -2,3 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class Profile(models.Model):
+    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    bio = models.TextField()
+    contactinfo = models.IntegerField(default=0)
+
+class Project(models.Model):
+    title = models.CharField(max_length =60)
+    project details = models.TextField()
+    creator = models.ForeignKey(User,on_delete=models.CASCADE)
+    score = models.IntegerField(default=0)
+
+class Rating(models.Models):
+    userid = models.ForeignKey(User,on_delete=models.CASCADE)
+    projectid = models.ForeignKey(Project,on_delete=models.CASCADE)
+    design = models.IntegerField(default=0)
+    usablity = models.IntegerField(default=0)
+    content = models.IntegerField(default=0)
