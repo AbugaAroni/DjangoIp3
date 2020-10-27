@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile, Project, Rating
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .forms import NewProjectForm, NewProfileForm
+from .forms import NewProjectForm, NewProfileForm, NewRatingsForm
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
@@ -57,3 +57,25 @@ def profile(request):
     else:
         form = NewProfileForm()
     return render(request, 'accounts/profile.html', {"form": form, "projects":projects,  "profiles":profiles})
+
+@login_required(login_url='/accounts/login/')
+def view_project(request, projectid):
+    current_user=request.user
+    projects = Project.objects.get(id=projectid)
+    try:
+        ratingz = Rating.objects.get(userid=current_user, projectid = projects)
+    except Profile.DoesNotExist:
+        ratingz = ""
+
+    if request.method == 'POST':
+        form = NewRatingsForm(request.POST, request.FILES)
+        if form.is_valid():
+            Ratinz = form.save(commit=False)
+            Ratinz.userid = current_user
+            Ratinz.projectid = projects
+            Ratinz.save()
+        return redirect(view_project)
+
+    else:
+        form = NewRatingsForm()
+    return render(request, 'singleproject.html', {"form": form, "project":projects, "ratingz":ratingz})
