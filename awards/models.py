@@ -22,7 +22,7 @@ class Profile(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length =60)
     project_details = models.TextField()
-    live_site = models.TextField()
+    live_site = models.CharField(max_length =100)
     creator = models.ForeignKey(User,on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
 
