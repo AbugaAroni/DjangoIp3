@@ -12,7 +12,7 @@ urlpatterns=[
     path('accounts/profile/', views.profile, name='user_profile'),
     re_path('search/', views.search_results, name='search_results'),
     path('api/projects/', views.ProjectList.as_view()),
-    path('api/profiles/', views.ProfilesList.as_view()),        
+    path('api/profiles/', views.ProfileList.as_view()),        
 ]
 
 if settings.DEBUG:
