@@ -9,7 +9,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Home | View all images</a>
+      <a class="navbar-brand" href="/">Home |</a>
     </div>
         <div class="col-sm-4 col-md-4 navbar-right">
     <form class="navbar-form" role="search" action="#">
@@ -23,16 +23,17 @@
     </form>
         </div>
     <div class="navbar-header">
-      <a class="navbar-brand" href="/admin">Admin</a>
+      <a class="navbar-brand" href="/admin">Admin |</a>
     </div>
     <div class="navbar-header">
-            {% if images == x %}
-                    <a class='btn btn-default' href="/accounts/profile">My profile</a>
-                    <a class='btn btn-default' href="accounts/logout">Logout</a>
-                    <a class='btn btn-default' href="{%url 'new_post'%}">Add a new post</a>
+            {% if user.is_authenticated %}
+                    <a class="navbar-brand" href="/accounts/profile">My profile |</a>
+                    <a class='btn btn-default' href="#">Add a new project</a>
+                  <a class="navbar-brand" href="accounts/logout">Logout |</a>
+
           {% else %}
-              <a class='btn btn-default' href="/accounts/login">Login</a>
-              <a class="btn btn-primary btn-sm" href="/accounts/register">Sign up</a>
+              <a class="navbar-brand" href="/accounts/login">Login |</a>
+              <a class="navbar-brand" href="/accounts/register">Sign up |</a>
             {% endif %}
           </div>
   </div>
