@@ -5,4 +5,5 @@ from django.conf.urls.static import static
 
 urlpatterns=[
     path('',views.home, name='Welcome'),
+    re_path('authorprofile/(\d+)', views.view_user, name='view_userprofile'),
 ]
