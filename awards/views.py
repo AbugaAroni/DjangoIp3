@@ -52,7 +52,7 @@ def profile(request):
             Profilez = form.save(commit=False)
             Profilez.username = current_user
             Profilez.save()
-        return render(request, 'accounts/profile.html', {"form": form, "projects":projects, "profiles":profiles})
+        return redirect(profile)
 
     else:
         form = NewProfileForm()
