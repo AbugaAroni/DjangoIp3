@@ -77,7 +77,10 @@ def view_project(request, projectid):
             Ratinz.projectid = projects
             Ratinz.save()
 
-            average_rating = (Ratinz.design + Ratinz.content + Ratinz.usablity)/3
+            average_rating = ((Ratinz.design + Ratinz.content + Ratinz.usablity)/3)
+            Existing_rating = projects.score
+            new_rating = ((Existing_rating + average_rating)/2)
+            projects.update_project(projects.id,average_rating)
 
             return HttpResponseRedirect(reverse("view_project", args=[projects.id]))
     else:
