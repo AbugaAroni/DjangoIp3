@@ -7,6 +7,19 @@ class Profile(models.Model):
     bio = models.TextField()
     contactinfo = models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.username
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
+    class Meta:
+        ordering = ['username']
+
+
 class Project(models.Model):
     title = models.CharField(max_length =60)
     project_details = models.TextField()
