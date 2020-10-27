@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import Profile, Project, Rating
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -74,9 +76,8 @@ def view_project(request, projectid):
             Ratinz.userid = current_user
             Ratinz.projectid = projects
             Ratinz.save()
-
-        return render(request,'singleproject.html', {"form": form, "project":projects, "ratingz":ratingz})
-
+#            return redirect('view_project', projectid=projects.id)
+            return HttpResponseRedirect(reverse("view_project", args=[projects.id]))
     else:
         form = NewRatingsForm()
     return render(request, 'singleproject.html', {"form": form, "project":projects, "ratingz":ratingz})
