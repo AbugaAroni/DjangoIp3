@@ -36,6 +36,6 @@ You will need to install the Dependencies from the requirements.txt file.
 Execute the command "python3.6 manage.py" whilst in the directory in your command line and you will be able to run the program.
 You will need a text editor to edit and view the code.
 
-### Link to the published site: [Images application by Abuga] (https://abugaip2.herokuapp.com/)
+### Link to the published site: [Images application by Abuga] (https://ipawards.herokuapp.com/)
 
 ### License: [MIT] (https://github.com/AbugaAroni/DjangoIp3/blob/main/LICENSE)
