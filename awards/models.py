@@ -22,6 +22,7 @@ class Profile(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length =60)
     project_details = models.TextField()
+    live_site = models.TextField()
     creator = models.ForeignKey(User,on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
 
@@ -43,3 +44,15 @@ class Rating(models.Model):
     design = models.IntegerField(default=0)
     usablity = models.IntegerField(default=0)
     content = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.id
+
+    def save_rating(self):
+        self.save()
+
+    def delete_rating(self):
+        self.delete()
+
+    class Meta:
+        ordering = ['id']
