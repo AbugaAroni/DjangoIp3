@@ -37,6 +37,10 @@ class Project(models.Model):
     def delete_project(self):
         self.delete()
 
+    @classmethod
+    def update_project(cls,projid,newscore):
+        cls.objects.filter(id = projid).update(score = newscore)
+
     class Meta:
         ordering = ['title']
 

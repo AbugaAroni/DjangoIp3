@@ -57,6 +57,16 @@ class ProjectTestClass(TestCase):
         testdelete = Project.objects.filter(title="testproject")
         self.assertEqual(len(testdelete), 0)
 
+    # Testing update Method
+    def test_update_method(self):
+        self.abugaproject.save_project()
+        testsaved = Project.objects.all()
+        self.assertTrue(len(testsaved) > 0)
+
+        self.abugaproject.update_project(self.abugaproject.id,10)
+        test_update = Project.objects.filter(score=10)
+        self.assertTrue(len(test_update) > 0)
+
 class RatingTestClass(TestCase):
 
     def setUp(self):

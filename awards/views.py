@@ -76,7 +76,9 @@ def view_project(request, projectid):
             Ratinz.userid = current_user
             Ratinz.projectid = projects
             Ratinz.save()
-#            return redirect('view_project', projectid=projects.id)
+
+            average_rating = (Ratinz.design + Ratinz.content + Ratinz.usablity)/3
+
             return HttpResponseRedirect(reverse("view_project", args=[projects.id]))
     else:
         form = NewRatingsForm()
