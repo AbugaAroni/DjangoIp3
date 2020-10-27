@@ -12,10 +12,15 @@
       <div class="panel panel-default">
 
         <div class="panel-heading">
-              <h3> {{profiles.username.username}} </h3>
+              <h3> {{user.username}} </h3>
         </div>
         <div class="panel-body">
+          {% if profiles == ""%}
+          <p> {{user.username}} has not submitted a profile </p>
+          {% else %}
+
           <div class="row">
+
             <div class="col-md-12">
               <p><span style="font-weight: bold;"> Bio: </span> {{profiles.bio}} </p>
               <hr>
@@ -26,6 +31,7 @@
               <p><span style="font-weight: bold;"> Contact info: </span> {{profiles.contactinfo}}</p>
             </div>
           </div>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -36,27 +42,26 @@
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        <h3 class="text-center">Their projects</h3>
+        <h3 class="text-center">{{user.username}}'s projects</h3>
       </div>
       <div class="panel-body">
           <div class="panel-body">
               <!-- Looping through model   -->
               <div class="row">
                 {% for project_item in projects %}
-                  <div class="col-xs-5 col-sm-5 col-md-12 col-lg-12" style="padding: 10px; margin: 30px; height: 500px; ">
+                  <div class="col-xs-11 col-sm-11 col-md-5 col-lg-5" style="padding: 10px; margin: 30px;">
                     <!-- displaying title -->
                     <div class="panel panel-default">
                       <div class="panel-heading">
                         <h2 class="text-center"> {{ project_item.title }}</h2>
                       </div>
                       <div class="panel-body">
-                      <div>
-                        <div class = "row">
-                          <div class = "col-md-12">
-                            <p> {{ project_item.project_details}}  </p>
-                              <hr>
+                          <div class = "row">
+                            <div class = "col-md-12">
+                              <p> {{ project_item.project_details}}  </p>
+                                <hr>
+                            </div>
                           </div>
-                        </div>
                           <div class = "row">
                             <div class = "col-md-12">
                               <p> <a href="singleproject/{{project_item.id}}">View details about this project</a>  </p>
@@ -69,11 +74,9 @@
                                 <hr>
                             </div>
                           </div>
-                      <div>
                       </div>
                     </div>
-                  </div>
-                    </div>
+                </div>
                           {% empty %}
                           <div class="row">
                             <div class="col-md-6">
@@ -81,10 +84,8 @@
                             </div>
                             <hr>
                           </div>
-                    {% endfor %}
-
-                  </div>
-        </div>
+          {% endfor %}
+              </div>
       </div>
     </div>
   </div>

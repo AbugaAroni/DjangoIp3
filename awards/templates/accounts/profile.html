@@ -15,62 +15,84 @@
         <div class="panel-heading">
           <h3 class="text-center">Your profile</h3>
         </div>
+        {% if profiles == ""%}
         <div class="panel-body">
-    <p> Welcome, {{user.username}} </p>
-      {% for p in profiles %}
-      {%if p.username == user%}
-  <p>Your Bio: </p>    {{p.bio}}
-  <p> Your profile picture: </p>
-    <img src="{{p.profilephoto.url}}"  class="img-responsive" style="display: block; margin-left: auto; margin-right: auto; width: 100%;" alt="">
-    <hr> <hr>
-      {%endif%}
-    {% endfor%}
+                  <p> You have not yet submitted a profile, please add one below. </p>
+          <form  action="{%url 'user_profile'%}" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
 
-
-    <form  action="{%url 'user_profile'%}" method="post" enctype="multipart/form-data">
-      {%csrf_token%}
-
-      {% bootstrap_form form%}
-      <input type="submit" class="btn btn-success btn-lg" value="Post">
-    </form>
-
-
-        </div>
-
-      </div>
-
+            {% bootstrap_form form%}
+            <input type="submit" class="btn btn-success btn-lg" value="Post">
+          </form>
+            </div>
+        {% else %}
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <p><span style="font-weight: bold;"> Bio: </span> {{profiles.bio}} </p>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p><span style="font-weight: bold;"> Contact info: </span> {{profiles.contactinfo}}</p>
+            </div>
+          </div>
+          </div>
+          {% endif %}
     </div>
     <!-- empty div -->
     <div class="col-md-4"></div>
   </div>
+<div>
   <div class="row" >
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        <h3 class="text-center">Your photos</h3>
+        <h3 class="text-center">Your projects</h3>
       </div>
       <div class="panel-body">
           <div class="panel-body">
-
-  {% for images_item in images %}
-    <!-- displaying title -->
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 10px; margin: 30px; border-bottom-style: double; height: 500px; ">
-      <h2 class="text-center"> {{ images_item.title }}</h2>
-      <hr>
-    <!--Display  images  -->
-    <div style="display: block; margin-left: auto; margin-right: auto; width: 100%; height: 50%;">
-      <img src="{{images_item.i_images.url}}" class="img-responsive" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" alt="Image">
-      <br><p><span style="font-weight: bold;">Caption:</span> <span style="font-style: italic">{{images_item.caption}}</span></p>
-    </div>
-    </div>
-            {% empty %}
+            <!-- Looping through model   -->
             <div class="row">
-              <div class="col-md-6">
-              <h2 class="text-center">There are no images to view currently</h2>
+              {% for project_item in projects %}
+                <div class="col-xs-11 col-sm-11 col-md-5 col-lg-5" style="padding: 10px; margin: 30px; ">
+                  <!-- displaying title -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h2 class="text-center"> {{ project_item.title }}</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class = "row">
+                          <div class = "col-md-12">
+                            <p> {{ project_item.project_details}}  </p>
+                              <hr>
+                          </div>
+                        </div>
+                        <div class = "row">
+                          <div class = "col-md-12">
+                            <p> <a href="singleproject/{{project_item.id}}">View details about this project</a>  </p>
+                              <hr>
+                          </div>
+                        </div>
+                        <div class = "row">
+                          <div class = "col-md-12">
+                              <p> <span style="font-weight: bold;"> Rating: </span>{{ project_item.score }}</p>
+                              <hr>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
               </div>
-              <hr>
+                        {% empty %}
+                        <div class="row">
+                          <div class="col-md-6">
+                          <h2 class="text-center">There are no projects to view currently</h2>
+                          </div>
+                          <hr>
+                        </div>
+        {% endfor %}
             </div>
-          {% endfor %}
   </div>
   </div>
 </div>
