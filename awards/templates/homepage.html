@@ -7,35 +7,53 @@
 
   <!-- Looping through model   -->
     <div class="row">
-    {% for images_item in images %}
-      <!-- displaying title -->
-      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 10px; margin: 30px; border-bottom-style: double; height: 500px; ">
-        <h2 class="text-center"> {{ images_item.title }}</h2>
-        <hr>
-      <!--Display  images  -->
-      <div style="display: block; margin-left: auto; margin-right: auto; width: 100%; height: 50%;">
-        <img src="{{images_item.i_images.url}}" class="img-responsive" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" alt="Image">
-      </div>
-        <p> <a href="singleimage/{{images_item.id}}">View details about this image</a>  </p>
-
-        <div class = "row">
-          <div class = "col-md-6">
-              <p> <span style="font-weight: bold;"> Location </span>-<a href="singlelocation/{{images_item.locations.id}}">{{ images_item.locations }}</a></p>
-              <p> <span style="font-weight: bold;"> Categories </span>-{% for c in images_item.category.all%} {{c.category_name}} | {% endfor %} </p>
+    {% for project_item in projects %}
+      <div class="col-xs-5 col-sm-5 col-md-12 col-lg-12" style="padding: 10px; margin: 30px; border-bottom-style: double; height: 500px; ">
+        <!-- displaying title -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="text-center"> {{ project_item.title }}</h2>
           </div>
-            <hr><hr>
+          <div class="panel-body">
+          <div>
+            <div class = "row">
+              <div class = "col-md-12">
+                <p> {{ project_item.project_details}}  </p>
+                  <hr>
+              </div>
+            </div>
+              <div class = "row">
+                <div class = "col-md-12">
+                  <p> <a href="singleproject/{{project_item.id}}">View details about this project</a>  </p>
+                    <hr>
+                </div>
+              </div>
+              <div class = "row">
+                <div class = "col-md-12">
+                    <p> <span style="font-weight: bold;"> Rating: </span>{{ project_item.score }}</p>
+                    <hr>
+                </div>
+              </div>
+              <div class = "row">
+                <div class = "col-md-12">
+                    <p> <span style="font-weight: bold;"> More from the Author: </span><a href="authorprofile/{{project_item.creator.id}}">{{ project_item.creator.username }}</a></p>
+                    <hr>
+                </div>
+              </div>
+          <div>
+          </div>
         </div>
       </div>
-
+        </div>
               {% empty %}
               <div class="row">
                 <div class="col-md-6">
-                <h2 class="text-center">There are no images to view currently</h2>
+                <h2 class="text-center">There are no projects to view currently</h2>
                 </div>
                 <hr>
               </div>
         {% endfor %}
-    </div>
+
 </div>
 
 {% endblock %}
