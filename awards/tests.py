@@ -36,3 +36,24 @@ class ProjectTestClass(TestCase):
         self.abuga = User(username="rick", password="password")
         self.abuga.save()
         self.abugaproject= Project(title = "testproject", project_details = "these are the details of the rpoject", creator = self.abuga,  score = 4)
+
+
+    # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.abugaproject,Project))
+
+    # Testing Save Method
+    def test_save_method(self):
+        self.abugaproject.save_project()
+        testsaved = Project.objects.all()
+        self.assertTrue(len(testsaved) > 0)
+
+    # Testing Delete Method
+    def test_delete_method(self):
+        self.abugaproject.save_project()
+        testsaved = Project.objects.all()
+        self.assertTrue(len(testsaved) > 0)
+
+        self.abugaproject.delete_project()
+        testdelete = Project.objects.filter(title="testproject")
+        self.assertEqual(len(testdelete), 0)

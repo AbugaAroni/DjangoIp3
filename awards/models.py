@@ -25,6 +25,18 @@ class Project(models.Model):
     creator = models.ForeignKey(User,on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.title
+
+    def save_project(self):
+        self.save()
+
+    def delete_project(self):
+        self.delete()
+
+    class Meta:
+        ordering = ['title']
+
 class Rating(models.Model):
     userid = models.ForeignKey(User,on_delete=models.CASCADE)
     projectid = models.ForeignKey(Project,on_delete=models.CASCADE)
