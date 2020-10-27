@@ -22,7 +22,7 @@ content 1-10
 
 
 things to implement
-authentication*
+authentication**
 post project
 view project and details and overall scrore
 rate project functionality
@@ -30,7 +30,7 @@ project search
 
 pages
 view all projects**
-view users projects
+view users projects**
 view project
 
 responsivity
