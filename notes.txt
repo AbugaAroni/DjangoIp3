@@ -1,0 +1,40 @@
+
+
+
+models
+
+user
+**install user thingy
+
+profile
+user info
+contact info
+
+project
+title
+project details
+uid foreign key
+score
+
+rating
+uid foreign key
+project foreign key
+design 1-10
+usablity 1-10
+content 1-10
+
+
+things to implement
+post project
+view project and details and overall scrore
+rate project functionality
+project search
+
+pages
+view all projects
+view users projects
+view project
+
+responsivity
+
+create the api
