@@ -27,6 +27,7 @@ class Project(models.Model):
     live_site = models.CharField(max_length =100)
     creator = models.ForeignKey(User,on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
+    ratedcount = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -39,6 +40,9 @@ class Project(models.Model):
 
     @classmethod
     def update_project(cls,projid,newscore):
+        ratedcount = cls.objects.get(id=projid)
+        newcount = ratedcount.ratedcount + 1
+        cls.objects.filter(id = projid).update(ratedcount = newcount)
         cls.objects.filter(id = projid).update(score = newscore)
 
     class Meta:

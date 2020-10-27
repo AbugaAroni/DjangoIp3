@@ -6,7 +6,7 @@ from django import forms
 class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = ['creator', 'score']
+        exclude = ['creator', 'score', 'ratedcount']
 
 class NewProfileForm(forms.ModelForm):
     class Meta:
