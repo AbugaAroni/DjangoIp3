@@ -10,3 +10,6 @@ urlpatterns=[
     re_path('viewproject/(\d+)', views.view_project, name='view_project'),
     path('accounts/profile/', views.profile, name='user_profile'),
 ]
+
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
