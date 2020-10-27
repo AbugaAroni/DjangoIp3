@@ -1,18 +1,19 @@
-# Friendbook / Django week 3 IP
+# Ip Awards / Django week 3 IP
 
 ### Author: [Abuga Aroni] (https://github.com/AbugaAroni/)
 
 ### Description
-This is an application that will allow user to view images, images posted by other users, follow other users and leave comments and likes.
+This is an application that will allow user to view github projects posted by other users. They will also be able to rate the projects posted.
+
 ### Features
 Users can sign up and sign in to the application to start using.
-Users can upload  pictures to the application.
-Users can see their profiles with all their pictures.
+Users can upload pictures and submit information to the application.
+Users can see their profiles with all their pictures and information and projects.
+Users can view projects.
+Users can rate projects.
 
 ### Limitations
-Some user stories were not implemented. Namely being able to likes, comment on pictures and follow other users.
-Website is not responsive.
-Logout button does not work on pages that are not the homepage.
+Some user stories were not implemented. Namely responsitivity.
 
 ### Technologies Used
 Python3.6
@@ -27,8 +28,7 @@ Python3.6
 Django3.1.2
 
 ### Setup Instructions
-To add images and such, log in as an admin.
-You can log in with user- bugsy, password-password
+To log in as an admin use; user- abuga, password-password
 
 If you wish to view the project, you have to download the files. You will need python3.6,Django3.1.2 and all the other Dependencies in the requirements.txt folder  to run the files.
 You will also need to install flask and a virtual environment to effectively run the program.
@@ -36,6 +36,6 @@ You will need to install the Dependencies from the requirements.txt file.
 Execute the command "python3.6 manage.py" whilst in the directory in your command line and you will be able to run the program.
 You will need a text editor to edit and view the code.
 
-### Link to the published site: [Images application by Abuga] (https://ipawards.herokuapp.com/)
+### Link to the published site: [IpAwards application by Abuga] (https://ipawards.herokuapp.com/)
 
 ### License: [MIT] (https://github.com/AbugaAroni/DjangoIp3/blob/main/LICENSE)
