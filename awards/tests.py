@@ -29,3 +29,10 @@ class ProfileTestClass(TestCase):
         self.abugaprofile.delete_profile()
         testdelete = Profile.objects.filter(username=self.abuga)
         self.assertEqual(len(testdelete), 0)
+
+class ProjectTestClass(TestCase):
+
+    def setUp(self):
+        self.abuga = User(username="rick", password="password")
+        self.abuga.save()
+        self.abugaproject= Project(title = "testproject", project_details = "these are the details of the rpoject", creator = self.abuga,  score = 4)

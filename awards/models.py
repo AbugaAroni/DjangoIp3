@@ -19,7 +19,6 @@ class Profile(models.Model):
     class Meta:
         ordering = ['username']
 
-
 class Project(models.Model):
     title = models.CharField(max_length =60)
     project_details = models.TextField()
