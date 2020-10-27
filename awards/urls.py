@@ -10,7 +10,9 @@ urlpatterns=[
     path('new/project', views.new_project, name='new_project'),
     re_path('viewproject/(\d+)', views.view_project, name='view_project'),
     path('accounts/profile/', views.profile, name='user_profile'),
-    re_path('search/', views.search_results, name='search_results'),    
+    re_path('search/', views.search_results, name='search_results'),
+    path('api/projects/', views.ProjectList.as_view()),
+    path('api/profiles/', views.ProfilesList.as_view()),        
 ]
 
 if settings.DEBUG:

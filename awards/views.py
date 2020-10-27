@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from .forms import NewProjectForm, NewProfileForm, NewRatingsForm
 from django.core.exceptions import ObjectDoesNotExist
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProjectSerializer, ProfileSerializer
 
 # Create your views here.
 def home(request):
@@ -100,3 +103,15 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'searchresult.html',{"message":message})
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)
