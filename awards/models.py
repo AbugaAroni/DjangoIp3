@@ -9,11 +9,11 @@ class Profile(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length =60)
-    project details = models.TextField()
+    project_details = models.TextField()
     creator = models.ForeignKey(User,on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
 
-class Rating(models.Models):
+class Rating(models.Model):
     userid = models.ForeignKey(User,on_delete=models.CASCADE)
     projectid = models.ForeignKey(Project,on_delete=models.CASCADE)
     design = models.IntegerField(default=0)
