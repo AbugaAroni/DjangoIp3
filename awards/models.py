@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     bio = models.TextField()
-    contactinfo = models.IntegerField(default=0)
+    contactinfo = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.username
+        return self.username.username
 
     def save_profile(self):
         self.save()
@@ -46,7 +46,7 @@ class Rating(models.Model):
     content = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.id
+        return self.projectid.title
 
     def save_rating(self):
         self.save()
