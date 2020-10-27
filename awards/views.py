@@ -87,3 +87,16 @@ def view_project(request, projectid):
     else:
         form = NewRatingsForm()
     return render(request, 'singleproject.html', {"form": form, "project":projects, "ratingz":ratingz})
+
+def search_results(request):
+
+    if 'project_search' in request.GET and request.GET["project_search"]:
+        search_term = request.GET.get("project_search")
+        searched_projects = Project.search_by_project(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'searchresult.html',{"message":message,"projects": searched_projects})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'searchresult.html',{"message":message})

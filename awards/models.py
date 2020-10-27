@@ -8,7 +8,7 @@ class Profile(models.Model):
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     bio = models.TextField()
     contactinfo = models.CharField(max_length=20)
-    user_image = models.ImageField(upload_to = 'articles/')    
+    user_image = models.ImageField(upload_to = 'articles/')
 
     def __str__(self):
         return self.username.username
@@ -45,6 +45,11 @@ class Project(models.Model):
         newcount = ratedcount.ratedcount + 1
         cls.objects.filter(id = projid).update(ratedcount = newcount)
         cls.objects.filter(id = projid).update(score = newscore)
+
+    @classmethod
+    def search_by_project(cls,search_term):
+        result = cls.objects.filter(title__icontains=search_term)
+        return result
 
     class Meta:
         ordering = ['title']
