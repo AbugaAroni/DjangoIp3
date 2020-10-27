@@ -31,7 +31,7 @@ project search
 pages
 view all projects**
 view users projects**
-view project
+view project*
 
 responsivity
 

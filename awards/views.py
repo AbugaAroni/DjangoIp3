@@ -64,7 +64,7 @@ def view_project(request, projectid):
     projects = Project.objects.get(id=projectid)
     try:
         ratingz = Rating.objects.get(userid=current_user, projectid = projects)
-    except Profile.DoesNotExist:
+    except Rating.DoesNotExist:
         ratingz = ""
 
     if request.method == 'POST':
@@ -74,7 +74,7 @@ def view_project(request, projectid):
             Ratinz.userid = current_user
             Ratinz.projectid = projects
             Ratinz.save()
-        return redirect(view_project)
+        return redirect('view_project', projectid = projects.id)
 
     else:
         form = NewRatingsForm()
