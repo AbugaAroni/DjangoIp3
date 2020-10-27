@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator
+from django.core.validators import MinValueValidator
 
 # Create your models here.
 class Profile(models.Model):
@@ -41,9 +43,9 @@ class Project(models.Model):
 class Rating(models.Model):
     userid = models.ForeignKey(User,on_delete=models.CASCADE)
     projectid = models.ForeignKey(Project,on_delete=models.CASCADE)
-    design = models.IntegerField(default=0)
-    usablity = models.IntegerField(default=0)
-    content = models.IntegerField(default=0)
+    design = models.PositiveIntegerField(default=0,validators=[MinValueValidator(0), MaxValueValidator(10)])
+    usablity = models.PositiveIntegerField(default=0,validators=[MinValueValidator(0), MaxValueValidator(10)])
+    content = models.PositiveIntegerField(default=0,validators=[MinValueValidator(0), MaxValueValidator(10)])
 
     def __str__(self):
         return self.projectid.title

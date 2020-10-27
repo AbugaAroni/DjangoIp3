@@ -74,7 +74,8 @@ def view_project(request, projectid):
             Ratinz.userid = current_user
             Ratinz.projectid = projects
             Ratinz.save()
-        return redirect('view_project', projectid = projects.id)
+
+        return render(request,'singleproject.html', {"form": form, "project":projects, "ratingz":ratingz})
 
     else:
         form = NewRatingsForm()
