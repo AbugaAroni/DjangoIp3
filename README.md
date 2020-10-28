@@ -11,6 +11,7 @@ Users can upload pictures and submit information to the application.
 Users can see their profiles with all their pictures and information and projects.
 Users can view projects.
 Users can rate projects.
+API endpoints available to access the users on the application and the profiles available as well.
 
 ### Limitations
 Some user stories were not implemented. Namely responsitivity.
