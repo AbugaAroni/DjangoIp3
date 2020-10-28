@@ -38,5 +38,7 @@ Execute the command "python3.6 manage.py" whilst in the directory in your comman
 You will need a text editor to edit and view the code.
 
 ### Link to the published site: [IpAwards application by Abuga] (https://ipawards.herokuapp.com/)
+API endpoint 1 - https://ipawards.herokuapp.com/api/profiles/
+API endpoint 2 - https://ipawards.herokuapp.com/api/projects/
 
 ### License: [MIT] (https://github.com/AbugaAroni/DjangoIp3/blob/main/LICENSE)
